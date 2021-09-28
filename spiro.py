@@ -110,6 +110,22 @@ class Spiro:
             self.drawingComplete = True
             self.t.hideturtle()
 
+    # draw the whole hing
+    def draw(self):
+
+        # draw the rest of the points
+        R, k, l = self.R, self.k, self.l
+
+        for i in range(0, 360 * self.nRot + 1, self.step):
+            a = math.radians(i)
+            x = R * ((1 - k) * math.cos(a) + l * k * math.cos((1 - k) * a / k))
+            y = R * ((1 - k) * math.sin(a) + l * k * math.sin((1 - k) * a / k))
+
+            self.t.setpos(self.xc + x, self.yc + y)
+
+            # drwaing done hide turtle
+            self.t.hideturtle()
+
 class SpiroAnimator:
 
     def __init__(self, N):
@@ -194,22 +210,6 @@ class SpiroAnimator:
             # restart drawing
             spiro.restart()
 
-#draw the whole hing
-def draw(self):
-
-    #draw the rest of the points
-    R, k, l = self.R, self.k, self.l
-
-    for i in range(0, 360*self.nRot + 1, self.step):
-        a = math.radians(i)
-        x = R * ((1 - k) * math.cos(a) + l * k * math.cos((1 - k) * a / k))
-        y = R * ((1 - k) * math.sin(a) + l * k * math.sin((1 - k) * a / k))
-
-        self.t.setpos(self.xc + x, self.yc + y)
-
-        #drwaing done hide turtle
-        self.t.hideturtle()
-
 def saveDrawing():
     #hide turtle cursor
     turtle.hideturtle()
@@ -231,7 +231,6 @@ def saveDrawing():
 
     #show turtle cursor
     turtle.showturtle()
-
 
 def main():
     # use sys.argv if needed
