@@ -126,6 +126,10 @@ class Spiro:
             # drwaing done hide turtle
             self.t.hideturtle()
 
+    #clear all
+    def clear(self):
+        self.t.clear()
+
 class SpiroAnimator:
 
     def __init__(self, N):
@@ -134,8 +138,8 @@ class SpiroAnimator:
         self.deltaT = 10
 
         #get window dimensions
-        self.width = turtle.window_width()
-        self.height = turtle.window_height()
+        self.width = turtle.window_width()/2
+        self.height = turtle.window_height()/2
 
         #create Spiro objects
         self.spiros = []
@@ -281,13 +285,13 @@ def main():
 
     else:
         #create the animator object
-        spiroAnim = SpiroAnimator(4)
+        spiroAnim = SpiroAnimator(2)
 
-        #add a key handler to toggle the turtle cursor
-        turtle.onkey(spiroAnim.toggleTurtles, "t")
+    #add a key handler to toggle the turtle cursor
+    turtle.onkey(spiroAnim.toggleTurtles, "t")
 
-        #add a key handler to restart the animation
-        turtle.onkey(spiroAnim.restart, "space")
+    #add a key handler to restart the animation
+    turtle.onkey(spiroAnim.restart, "space")
 
     #start the turtle loop
     turtle.mainloop()
